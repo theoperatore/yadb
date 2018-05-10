@@ -1,0 +1,14 @@
+{
+  "name": "yadb",
+  "version": "1.0.0",
+  "description": "Yet Another (nodejs, filesystem-based) Database",
+  "main": "src/index.js",
+  "repository": "git@github.com:theoperatore/yadb.git",
+  "author": "Alex Petersen <theoperatore@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "fast-memoize": "^2.3.2",
+    "fs-extra": "^6.0.1"
+  }
+}
