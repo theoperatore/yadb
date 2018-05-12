@@ -1,4 +1,4 @@
-# Yadb
+# Ya-DB
 
 Yet Another (nodejs, filesystem-based) Database
 
@@ -15,14 +15,14 @@ Good enough for testing and good enough for hacking. 🚀
 ## Installation
 
 ```bash
-yarn add yadb
+yarn add ya-db
 ```
 
 ## Usage
 
 ```javascript
 const path = require('path');
-const Yadb = require('yadb');
+const Yadb = require('ya-db');
 const pathToDatabaseDir = path.resolve(process.cwd(), 'dataDir');
 
 // create an instance
@@ -48,7 +48,7 @@ const isDeleted = await db.delete('0-myFile.json');
 
 ## Limitations
 
-This is not recursive! There can be **zero** directories in the folder used for saving the files. `Yadb` will throw when trying to read a file that is a directory.
+This is not recursive! There can be **zero** directories in the folder used for saving the files. `Ya-db` will throw when trying to read a file that is a directory.
 
 The database will only be as fast as the filesystem can read and write.
 

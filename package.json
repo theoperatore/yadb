@@ -1,14 +1,15 @@
 {
-  "name": "@theoperatore/yadb",
+  "name": "ya-db",
   "version": "1.0.0",
   "description": "Yet Another (nodejs, filesystem-based) Database",
-  "main": "src/yadb.js",
+  "main": "src/ya-db.js",
   "repository": "git@github.com:theoperatore/yadb.git",
   "author": "Alex Petersen <theoperatore@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "yarn test"
   },
   "dependencies": {
     "fast-memoize": "^2.3.2",

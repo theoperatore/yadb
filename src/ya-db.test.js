@@ -1,5 +1,5 @@
 const path = require('path');
-const Yadb = require('./yadb');
+const Yadb = require('./ya-db');
 
 const mockDirPath = path.resolve(process.cwd(), 'testDatabase');
 const mockFilename = '0-mockfilename.json';
