@@ -17,6 +17,7 @@ class Yadb {
     this._filelist = null;
 
     this._getFileList = this._getFileList.bind(this);
+    this.write = this.write.bind(this);
     this.read = this.read.bind(this);
     this.readRange = this.readRange.bind(this);
   }
@@ -38,6 +39,12 @@ class Yadb {
     });
   }
 
+  write(filename, fileString) {
+    const resolvedPath = path.resolve(this.dirPath, filename);
+    return fs.writeJson(resolvedPath, fileString, { spaces: 2 })
+      .then(() => true);
+  }
+
   read(filename) {
     const resolvedPath = path.resolve(this.dirPath, filename);
     return memoizedReadJson(resolvedPath);
@@ -49,6 +56,11 @@ class Yadb {
     return this._getFileList()
       .then(files => files.slice(offset, limit + offset))
       .then(files => Promise.all(files.map(this.read)))
+  }
+
+  delete(filename) {
+    const resolvedPath = path.resolve(this.dirPath, filename);
+    return fs.remove(filename).then(() => true);
   }
 }
 

@@ -22,9 +22,11 @@ jest.mock('fs-extra', () => Object.assign(
       if (filename in mockFiles) {
         return Promise.resolve(mockFiles[filename])
       }
-      Promise.reject(`Mock file not found in mock list: ${filename}`);
+      return Promise.reject(`Mock file not found in mock list: ${filename}`);
     },
     readdir: (dir, cb) => cb(null, mockFilesList),
+    writeJson: () => Promise.resolve(),
+    remove: () => Promise.resolve(),
   },
 ));
 
@@ -37,9 +39,9 @@ test('throws when givin a directory that does not exist', () => {
   expect(() => new Yadb(notRealPath)).toThrow(`No directory found at path: ${notRealPath}`);
 });
 
-test.skip('can create a json file', () => {
+test('can create a json file', () => {
   const db = new Yadb(mockDirPath);
-  return expect(db.create(mockFilename, mockFile)).resolves.toEqual(true);
+  return expect(db.write(mockFilename, mockFile)).resolves.toEqual(true);
 });
 
 test('can read a json file', () => {
@@ -53,4 +55,9 @@ test('can read a range of json files', () => {
   const offset = 1;
 
   return expect(db.readRange(limit, offset)).resolves.toEqual([mockFile1, mockFile2]);
+});
+
+test('can delete a file', () => {
+  const db = new Yadb(mockDirPath);
+  return expect(db.delete(mockFilename)).resolves.toEqual(true);
 });

@@ -1,5 +1,5 @@
 {
-  "name": "yadb",
+  "name": "@theoperatore/yadb",
   "version": "1.0.0",
   "description": "Yet Another (nodejs, filesystem-based) Database",
   "main": "src/yadb.js",
